@@ -1,16 +1,17 @@
 'use client';
 
-import { Download } from 'lucide-react';
+import { Download, Lock } from 'lucide-react';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
-import QRCode from 'qrcode';
+
 
 interface Props {
   completedSaleData: any;
   onDone: () => void;
+  paymentVerified?: boolean;
 }
 
-export default function ReceiptDownloader({ completedSaleData, onDone }: Props) {
+export default function ReceiptDownloader({ completedSaleData, onDone, paymentVerified = true }: Props) {
   const generateReceiptPDF = async () => {
     if (!completedSaleData) return;
 
@@ -20,7 +21,7 @@ export default function ReceiptDownloader({ completedSaleData, onDone }: Props) 
     // Header
     doc.setFontSize(22);
     doc.setFont('helvetica', 'bold');
-    doc.text('Yenpoobi', 74, 20, { align: 'center' });
+    doc.text('SnapSell', 74, 20, { align: 'center' });
 
     doc.setFontSize(12);
     doc.setFont('helvetica', 'normal');
@@ -29,7 +30,6 @@ export default function ReceiptDownloader({ completedSaleData, onDone }: Props) 
     doc.setFontSize(10);
     doc.text(`Date: ${completedSaleData.date}`, 14, 45);
     doc.text(`Payment: ${completedSaleData.paymentMethod.toUpperCase()}`, 14, 52);
-    //doc.text(`Status: ${isCash ? 'PAID' : 'PENDING PAYMENT'}`, 14, 59);
 
     // Items Table
     const tableColumn = ["Item", "Qty", "Price", "Total"];
@@ -45,13 +45,12 @@ export default function ReceiptDownloader({ completedSaleData, onDone }: Props) 
       head: [tableColumn],
       body: tableRows,
       theme: 'striped',
-      headStyles: { fillColor: [37, 99, 235] },
+      headStyles: { fillColor: [124, 58, 237] },
       margin: { top: 56 }
     });
 
     const finalY = (doc as any).lastAutoTable.finalY || 66;
 
-    // Summary
     const summaryXLabel = 95;
     const summaryXValue = 134;
 
@@ -69,63 +68,35 @@ export default function ReceiptDownloader({ completedSaleData, onDone }: Props) 
     doc.text('Total:', summaryXLabel, finalY + 27);
     doc.text(`GHS ${completedSaleData.total.toFixed(2)}`, summaryXValue, finalY + 27, { align: 'right' });
 
-    // QR Code for non-cash payments
-    if (!isCash && completedSaleData.paystackUrl) {
-      doc.setFontSize(11);
-      doc.setFont('helvetica', 'bold');
-      doc.text('Scan to Pay', 74, finalY + 42, { align: 'center' });
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'italic');
+    doc.text('Thank you for shopping at SnapSell!', 74, finalY + 45, { align: 'center' });
 
-      try {
-        const qrDataUrl = await QRCode.toDataURL(completedSaleData.paystackUrl, {
-          width: 150,
-          margin: 1,
-        });
-
-        // Add QR code image centered
-        doc.addImage(qrDataUrl, 'PNG', 50, finalY + 44, 50, 50);
-
-        // Add the link below QR code
-        doc.setFontSize(8);
-        doc.setFont('helvetica', 'normal');
-        doc.setTextColor(37, 99, 235);
-        doc.text(completedSaleData.paystackUrl, 74, finalY + 97, {
-          align: 'center',
-          maxWidth: 120,
-        });
-        doc.setTextColor(0, 0, 0);
-
-        doc.setFontSize(9);
-        doc.setFont('helvetica', 'italic');
-        doc.text('Pay with MoMo, Card or Bank — scan or visit the link above', 74, finalY + 134, { align: 'center' });
-        doc.text('Thank you for shopping at Yenpoobi!', 74, finalY + 141, { align: 'center' });
-      } catch (err) {
-        console.error('QR generation failed:', err);
-        doc.setFontSize(10);
-        doc.setFont('helvetica', 'italic');
-        doc.text('Thank you for shopping at Yenpoobi!', 74, finalY + 45, { align: 'center' });
-      }
-    } else {
-      doc.setFontSize(10);
-      doc.setFont('helvetica', 'italic');
-      doc.text('Thank you for shopping at Yenpoobi!', 74, finalY + 45, { align: 'center' });
-    }
-
-    doc.save('yenpoobi_receipt.pdf');
+    doc.save('SnapSell_receipt.pdf');
   };
 
   return (
-    <div className="pt-4 flex flex-col gap-3">
+    <div className="pt-2 flex flex-col gap-3">
       <button
         onClick={generateReceiptPDF}
-        className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-primary text-primary-foreground
-         rounded-lg hover:opacity-90 transition-colors font-semibold shadow-sm"
+        disabled={!paymentVerified}
+        className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-primary text-primary-foreground rounded-xl hover:opacity-90 transition-colors font-semibold shadow-sm disabled:opacity-40 disabled:cursor-not-allowed"
       >
-        <Download className="w-5 h-5" />
-        <span>Download Receipt (PDF)</span>
+        {paymentVerified ? (
+          <>
+            <Download className="w-5 h-5" />
+            <span>Download Receipt (PDF)</span>
+          </>
+        ) : (
+          <>
+            <Lock className="w-5 h-5" />
+            <span>Receipt locked until payment confirmed</span>
+          </>
+        )}
       </button>
       <button
         onClick={onDone}
-        className="w-full py-3 px-4 bg-secondary font-semibold hover:bg-secondary/80 border border-border rounded-lg transition-colors"
+        className="w-full py-3 px-4 bg-secondary font-semibold hover:bg-secondary/80 border border-border rounded-xl transition-colors"
       >
         Start New Sale
       </button>

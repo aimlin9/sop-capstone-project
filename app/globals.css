@@ -48,111 +48,110 @@
 }
 
 /* ─────────────────────────────────────────────────────────
-   YENPOOBI POS — Amber / Graphite Professional Theme
-   Graphite    #343330  — dominant dark (headers, buttons)
-   Dark Khaki  #45462a  — deep accent
-   Olive Bark  #7e5920  — mid-tone
-   Amber Earth #dc851f  — warm accent / active states
-   Amber Glow  #ffa737  — bright highlight (dark mode primary)
+   SNAPSELL POS — Deep Purple Premium Theme
+   Purple Night  #3b0764  — darkest purple
+   Royal Purple  #7c3aed  — primary action color
+   Soft Violet   #a78bfa  — light accent / dark mode primary
+   Off White     #fafafa  — light background
    ───────────────────────────────────────────────────────── */
 
 :root {
-  --radius: 0.5rem;
+  --radius: 0.6rem;
 
-  /* Page background — warm off-white */
-  --background: hsl(40, 20%, 97%);
-  --foreground: hsl(45, 4%, 15%);
+  /* Page background — clean off-white */
+  --background: hsl(270, 20%, 98%);
+  --foreground: hsl(270, 10%, 10%);
 
   /* Cards & Popovers */
   --card: hsl(0, 0%, 100%);
-  --card-foreground: hsl(45, 4%, 15%);
+  --card-foreground: hsl(270, 10%, 10%);
   --popover: hsl(0, 0%, 100%);
-  --popover-foreground: hsl(45, 4%, 15%);
+  --popover-foreground: hsl(270, 10%, 10%);
 
-  /* Primary — Graphite: headers, nav, buttons */
-  --primary: hsl(45, 4%, 20%);
-  --primary-foreground: hsl(40, 20%, 97%);
+  /* Primary — Royal Purple */
+  --primary: hsl(263, 70%, 50%);
+  --primary-foreground: hsl(0, 0%, 100%);
 
-  /* Secondary — light warm grey */
-  --secondary: hsl(40, 15%, 93%);
-  --secondary-foreground: hsl(45, 4%, 20%);
+  /* Secondary — light purple tint */
+  --secondary: hsl(270, 30%, 94%);
+  --secondary-foreground: hsl(263, 70%, 40%);
 
   /* Muted */
-  --muted: hsl(40, 12%, 92%);
-  --muted-foreground: hsl(36, 8%, 45%);
+  --muted: hsl(270, 20%, 93%);
+  --muted-foreground: hsl(270, 10%, 45%);
 
-  /* Accent — Amber Earth: highlights, focus, active badges */
-  --accent: hsl(32, 75%, 49%);
-  --accent-foreground: hsl(0, 0%, 100%);
+  /* Accent — soft violet */
+  --accent: hsl(270, 60%, 92%);
+  --accent-foreground: hsl(263, 70%, 40%);
 
   --destructive: hsl(0, 72%, 51%);
 
   /* Borders & Inputs */
-  --border: hsl(36, 15%, 88%);
-  --input: hsl(36, 15%, 88%);
-  --ring: hsl(32, 75%, 49%);
+  --border: hsl(270, 20%, 88%);
+  --input: hsl(270, 20%, 88%);
+  --ring: hsl(263, 70%, 50%);
 
   /* Charts */
-  --chart-1: hsl(32, 75%, 49%);
-  --chart-2: hsl(34, 100%, 61%);
-  --chart-3: hsl(36, 59%, 31%);
-  --chart-4: hsl(62, 25%, 22%);
-  --chart-5: hsl(45, 4%, 20%);
+  --chart-1: hsl(263, 70%, 50%);
+  --chart-2: hsl(280, 65%, 60%);
+  --chart-3: hsl(245, 60%, 55%);
+  --chart-4: hsl(300, 50%, 55%);
+  --chart-5: hsl(220, 60%, 55%);
 
   /* Sidebar */
-  --sidebar: hsl(40, 14%, 95%);
-  --sidebar-foreground: hsl(45, 4%, 20%);
-  --sidebar-primary: hsl(45, 4%, 20%);
-  --sidebar-primary-foreground: hsl(40, 20%, 97%);
-  --sidebar-accent: hsl(32, 75%, 49%);
-  --sidebar-accent-foreground: hsl(0, 0%, 100%);
-  --sidebar-border: hsl(36, 15%, 88%);
-  --sidebar-ring: hsl(32, 75%, 49%);
+  --sidebar: hsl(270, 25%, 96%);
+  --sidebar-foreground: hsl(270, 10%, 15%);
+  --sidebar-primary: hsl(263, 70%, 50%);
+  --sidebar-primary-foreground: hsl(0, 0%, 100%);
+  --sidebar-accent: hsl(270, 60%, 92%);
+  --sidebar-accent-foreground: hsl(263, 70%, 40%);
+  --sidebar-border: hsl(270, 20%, 88%);
+  --sidebar-ring: hsl(263, 70%, 50%);
 }
 
 .dark {
-  /* Deep graphite backgrounds */
-  --background: hsl(45, 4%, 12%);
-  --foreground: hsl(40, 20%, 93%);
+  /* Deep purple-black backgrounds */
+  --background: hsl(270, 15%, 8%);
+  --foreground: hsl(270, 20%, 95%);
 
-  --card: hsl(45, 4%, 18%);
-  --card-foreground: hsl(40, 20%, 93%);
-  --popover: hsl(45, 4%, 18%);
-  --popover-foreground: hsl(40, 20%, 93%);
+  --card: hsl(270, 12%, 13%);
+  --card-foreground: hsl(270, 20%, 95%);
+  --popover: hsl(270, 12%, 13%);
+  --popover-foreground: hsl(270, 20%, 95%);
 
-  /* Primary — Amber Glow in dark mode */
-  --primary: hsl(34, 100%, 61%);
-  --primary-foreground: hsl(45, 4%, 12%);
+  /* Primary — Soft Violet in dark mode */
+  --primary: hsl(263, 85%, 68%);
+  --primary-foreground: hsl(270, 15%, 8%);
 
-  --secondary: hsl(45, 4%, 24%);
-  --secondary-foreground: hsl(40, 20%, 93%);
+  --secondary: hsl(270, 12%, 20%);
+  --secondary-foreground: hsl(270, 20%, 90%);
 
-  --muted: hsl(45, 4%, 22%);
-  --muted-foreground: hsl(36, 10%, 55%);
+  --muted: hsl(270, 10%, 18%);
+  --muted-foreground: hsl(270, 10%, 55%);
 
-  --accent: hsl(32, 75%, 49%);
-  --accent-foreground: hsl(0, 0%, 100%);
+  --accent: hsl(270, 20%, 22%);
+  --accent-foreground: hsl(263, 85%, 75%);
 
   --destructive: hsl(0, 72%, 60%);
 
-  --border: hsl(45, 4%, 26%);
-  --input: hsl(45, 4%, 26%);
-  --ring: hsl(34, 100%, 61%);
+  --border: hsl(270, 10%, 22%);
+  --input: hsl(270, 10%, 22%);
+  --ring: hsl(263, 85%, 68%);
 
-  --chart-1: hsl(34, 100%, 61%);
-  --chart-2: hsl(32, 75%, 49%);
-  --chart-3: hsl(36, 59%, 45%);
-  --chart-4: hsl(62, 25%, 40%);
-  --chart-5: hsl(40, 20%, 70%);
+  --chart-1: hsl(263, 85%, 68%);
+  --chart-2: hsl(280, 75%, 70%);
+  --chart-3: hsl(245, 70%, 65%);
+  --chart-4: hsl(300, 60%, 65%);
+  --chart-5: hsl(220, 70%, 65%);
 
-  --sidebar: hsl(45, 4%, 16%);
-  --sidebar-foreground: hsl(40, 20%, 93%);
-  --sidebar-primary: hsl(34, 100%, 61%);
-  --sidebar-primary-foreground: hsl(45, 4%, 12%);
-  --sidebar-accent: hsl(45, 4%, 24%);
-  --sidebar-accent-foreground: hsl(40, 20%, 93%);
-  --sidebar-border: hsl(45, 4%, 26%);
-  --sidebar-ring: hsl(34, 100%, 61%);
+  --sidebar: hsl(270, 15%, 11%);
+  --sidebar-foreground: hsl(270, 20%, 90%);
+  --sidebar-primary: hsl(263, 85%, 68%);
+  --sidebar-primary-foreground: hsl(270, 15%, 8%);
+  --sidebar-accent: hsl(270, 12%, 20%);
+  --sidebar-accent-foreground: hsl(270, 20%, 90%);
+  --sidebar-border: hsl(270, 10%, 22%);
+  --sidebar-ring: hsl(263, 85%, 68%);
 }
 
 @layer base {

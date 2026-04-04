@@ -22,6 +22,7 @@ export default function BetterAuthUIProvider({ children }: { children: ReactNode
                 router.refresh()
             }}
             Link={Link}
+            appName="SnapSell POS"
         >
             {children}
         </AuthUIProvider>

@@ -17,8 +17,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Yenpoobi POS",
-  description: "Professional Point of Sale System",
+  title: "SnapSell POS",
+  description: "Fast, modern point of sale for retail businesses.",
+  icons: {
+    icon: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({

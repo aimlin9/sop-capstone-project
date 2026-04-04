@@ -210,7 +210,7 @@ export type ProductGroupByOutputType = {
   _max: ProductMaxAggregateOutputType | null
 }
 
-type GetProductGroupByPayload<T extends ProductGroupByArgs> = Prisma.PrismaPromise<
+export type GetProductGroupByPayload<T extends ProductGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<ProductGroupByOutputType, T['by']> &
       {
@@ -302,14 +302,14 @@ export type ProductCreateInput = {
   quantity: number
   barcode: string
   createdAt?: Date | string
-  category: Prisma.CategoryCreateNestedOneWithoutProductsInput
+  category?: Prisma.CategoryCreateNestedOneWithoutProductsInput
   saleItems?: Prisma.SaleItemCreateNestedManyWithoutProductInput
 }
 
 export type ProductUncheckedCreateInput = {
   id?: string
   name: string
-  categoryId: string
+  categoryId?: string
   price: number
   quantity: number
   barcode: string
@@ -342,7 +342,7 @@ export type ProductUncheckedUpdateInput = {
 export type ProductCreateManyInput = {
   id?: string
   name: string
-  categoryId: string
+  categoryId?: string
   price: number
   quantity: number
   barcode: string
@@ -561,13 +561,13 @@ export type ProductCreateWithoutSaleItemsInput = {
   quantity: number
   barcode: string
   createdAt?: Date | string
-  category: Prisma.CategoryCreateNestedOneWithoutProductsInput
+  category?: Prisma.CategoryCreateNestedOneWithoutProductsInput
 }
 
 export type ProductUncheckedCreateWithoutSaleItemsInput = {
   id?: string
   name: string
-  categoryId: string
+  categoryId?: string
   price: number
   quantity: number
   barcode: string
